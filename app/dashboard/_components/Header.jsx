@@ -14,6 +14,8 @@ import { ModeToggle } from './ModeToggle'
  * @param {Props} props
  */
 const Navbar = (props) => {
+  const { user } = props;
+
   return (
     <div className='p-4 flex items-center justify-between relative'>
         <aside className='flex items-center gap-2'>
@@ -34,9 +36,11 @@ const Navbar = (props) => {
             </ul>
         </nav>
         <aside className='flex gap-2 items-center'>
-            <Link href={'/agency'} className='bg-violet-500 text-white p-2 px-4 rounded-md hover:bg-violet-800'>
-                Sign In
-            </Link>
+            {user === null && (
+                <Link href={'/agency'} className='bg-violet-500 text-white p-2 px-4 rounded-md hover:bg-violet-800'>
+                    Sign In
+                </Link>
+            )}
             <UserButton />
             <ModeToggle />
         </aside>
